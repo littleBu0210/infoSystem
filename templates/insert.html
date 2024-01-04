@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增加数据</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <form action="/insert_page" method="post" align="center">
+
+
+        <div>
+            <label>教室位置</label><br>
+            {% if allData %}
+            <input type="text" name="classroom_name" value="{{allData[0]}}">
+            {% else %}
+            <input type="text" name="classroom_name" value="301-101">
+            {% endif %}
+            
+        </div>
+        <div>
+            <label>学员队名称</label><br>
+            {% if allData %}
+            <input type="text" name="person_name" value="{{allData[1]}}">
+            {% else %}
+            <input type="text" name="person_name" value="学员九队">
+            {% endif %}
+            
+        </div>
+        <div>
+            <label>周次</label><br>
+            {% if allData %}
+            <input type="text" name="week" value="{{allData[2]}}" type="number"  oninput="if(value>20)value=20;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+            {% else %}
+            <input type="text" name="week" value="1" type="number"  oninput="if(value>20)value=20;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+            {% endif %}
+            
+        </div>
+        <div>
+            <label>天</label><br>
+            {% if allData %}
+            <input type="text" name="day" value="{{allData[3]}}"  type="number" oninput="if(value>7)value=7;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+            {% else %}
+            <input type="text" name="day" value="1" type="number" oninput="if(value>7)value=7;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+            {% endif %}
+        </div>
+        <div>
+            <label>节次</label><br>
+            {% if allData %}
+            <input type="text" name="section" value="{{allData[4]}}" type="number" oninput="if(value>10)value=10;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+            {% else %}
+            <input type="text" name="section" value="1" type="number" oninput="if(value>10)value=10;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+            {% endif %}
+        
+        
+        </div>
+        <button>提交</button>
+    </form>
+</body>
+</html>

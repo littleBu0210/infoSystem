@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="icon" href="../img/home.ico" sizes="16x16">
+    <style>
+        h1 {
+            text-align: center;
+        }
+        div {
+            text-align: center;
+        }
+        h2 {
+            color:red;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>自习教室管理系统</h1>
+    <h2>
+        {% if get_flashed_messages() %}
+        {{ get_flashed_messages()[0] }}
+        {% endif %}
+    </h2>
+
+    <div>
+        <a href="./importData">初始化数据</a>
+
+        <a href="./insert">插入数据</a>
+
+        <a href="./query">查询</a>
+    </div>
+
+    {% if flag==1 %}
+    <div>
+        <a href="./">主页</a>
+    </div>
+    {% endif %}
+
+    <table border="1" cellspacing="0" width="600" align="center">
+        <caption>所有信息</caption>
+        <thead>
+            <tr>
+                <!-- <th>id</th> -->
+                <th>教室</th>
+                <th>学员队</th>
+                <th>周次</th>
+                <th>天</th>
+                <th>节次</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for item in data %}
+        <tr>
+            <!-- <td>{{item[0]}}</td> -->
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
+            <td>{{item[5]}}</td>
+            <td>
+                <form action="./modify" method="post">
+                    <input type="hidden" name="id" value="{{item[0]}}">
+                    <input type="hidden" name="classroom_name" value="{{item[1]}}">
+                    <input type="hidden" name="person_name" value="{{item[2]}}">
+                    <input type="hidden" name="week" value="{{item[3]}}">
+                    <input type="hidden" name="day" value="{{item[4]}}">
+                    <input type="hidden" name="section" value="{{item[5]}}">
+                    <button>修改</button>
+                </form>
+            </td>
+            <td>
+                <form action="./delete" method="get">
+                    <input type="hidden" name="id" value="{{item[0]}}">
+                    <button>删除</button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>查询</title>
+</head>
+<body>
+    <form action="/query_page" method="post" align="center">
+        <div>
+            <label>教室位置</label><br>
+            <input type="text" name="classroom_name" value="301-101">
+        </div>
+        <div>
+            <label>周次</label><br>
+            <input type="text" name="week" value="1" type="number"  oninput="if(value>20)value=20;if(value<1)value=1;value=value.replace(/[^\d]/g,'')">
+        </div>
+        <button>提交</button>
+    </form>
+</body>
+</html>
